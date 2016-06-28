@@ -11,3 +11,29 @@ If you choose to install the .psm1 module version of this, follow these instruct
 2. Place a folder in any one of these paths named Monitor-Information (this can actually be anything)
 3. Place Monitor-Information.psm1 inside of this folder
 4. If you have Powershell 3 or higher running the command (in this case Get-Monitor) will automatically import the module, otherwise you'll need to run `Import-Module Monitor-Information` and then run the command.
+
+## Usage (Script)
+To use the script:
+
+```PowerShell
+PS C:\Scripts\> Get-Monitor.ps1 -ComputerName SSL1-F1102-1G2Z
+
+Manufacturer Model    SerialNumber AttachedComputer
+------------ -----    ------------ ----------------
+HP           HP E241i CN12345678   SSL1-F1102-1G2Z
+HP           HP E241i CN91234567   SSL1-F1102-1G2Z 
+```
+
+You can also use it with multiple computers:
+```PowerShell
+PS C:\Scripts\> $Computers = @("SSL7-F108F-9D4Z","SSL1-F1102-1G2Z","SSA7-F1071-0T7F")
+PS C:\Scripts\> Get-Monitor.ps1 -ComputerName $Computers
+
+Manufacturer Model      SerialNumber AttachedComputer
+------------ -----      ------------ ----------------
+HP           HP LA2405x CN12345678   SSL7-F108F-9D4Z
+HP           HP E241i   CN91234567   SSL1-F1102-1G2Z 
+HP           HP E241i   CN89123456   SSL1-F1102-1G2Z 
+HP           HP E241i   CN78912345   SSL1-F1102-1G2Z
+HP           HP ZR22w   CN67891234   SSA7-F1071-0T7F
+```
