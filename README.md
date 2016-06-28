@@ -6,6 +6,7 @@ I've included both a module and script version of this. This allows you to eithe
 
 ## Module Installation
 If you choose to install the .psm1 module version of this, follow these instructions:
+
 1. Find your PSModule paths by running `$env:PSModulePath.Split(";")` in a Powershell prompt
 2. Place a folder in any one of these paths named Monitor-Information (this can actually be anything)
 3. Place Monitor-Information.psm1 inside of this folder
