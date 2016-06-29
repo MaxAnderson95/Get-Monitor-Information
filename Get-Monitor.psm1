@@ -126,7 +126,11 @@ Function Get-Monitor {
     ForEach ($Monitor in $Monitors) {
       
       #Grabs respective data and converts it from ASCII encoding and removes any trailing ASCII null values
-      $Mon_Model = ([System.Text.Encoding]::ASCII.GetString($Monitor.UserFriendlyName)).Replace("$([char]0x0000)","")
+      If ([System.Text.Encoding]::ASCII.GetString($Monitor.UserFriendlyName) -ne $null) {
+        $Mon_Model = ([System.Text.Encoding]::ASCII.GetString($Monitor.UserFriendlyName)).Replace("$([char]0x0000)","")
+      } else {
+        $Mon_Model = $null
+      }
       $Mon_Serial_Number = ([System.Text.Encoding]::ASCII.GetString($Monitor.SerialNumberID)).Replace("$([char]0x0000)","")
       $Mon_Attached_Computer = ($Monitor.PSComputerName).Replace("$([char]0x0000)","")
       $Mon_Manufacturer = ([System.Text.Encoding]::ASCII.GetString($Monitor.ManufacturerName)).Replace("$([char]0x0000)","")
