@@ -141,12 +141,13 @@ Function Get-Monitor {
       }
       
       #Creates a custom monitor object and fills it with 4 NoteProperty members and the respective data
-      $Monitor_Obj = New-Object -TypeName PSObject
-      
-      $Monitor_Obj | Add-Member -MemberType NoteProperty -Name "Manufacturer" -Value $Mon_Manufacturer_Friendly
-      $Monitor_Obj | Add-Member -MemberType NoteProperty -Name "Model" -Value $Mon_Model
-      $Monitor_Obj | Add-Member -MemberType NoteProperty -Name "SerialNumber" -Value $Mon_Serial_Number
-      $Monitor_Obj | Add-Member -MemberType NoteProperty -Name "AttachedComputer" -Value $Mon_Attached_Computer
+      $Monitor_Obj = [PSCustomObject]@{
+        Manufacturer     = $Mon_Manufacturer_Friendly
+        Model            = $Mon_Model
+        SerialNumber     = $Mon_Serial_Number
+        AttachedComputer = $Mon_Attached_Computer
+      }
+
       
       #Appends the object to the array
       $Monitor_Array += $Monitor_Obj
