@@ -14,7 +14,7 @@ Function Get-Monitor {
       Use this to specify the computer(s) which you'd like to retrieve information about monitors from.
 
       .EXAMPLE
-      PS C:/> Get-Monitor -ComputerName SSL1-F1102-1G2Z
+      PS C:/> Get-Monitor.ps1 -ComputerName SSL1-F1102-1G2Z
 
       Manufacturer Model    SerialNumber AttachedComputer
       ------------ -----    ------------ ----------------
@@ -24,7 +24,7 @@ Function Get-Monitor {
 
       .EXAMPLE
       PS C:/> $Computers = @("SSL7-F108F-9D4Z","SSL1-F1102-1G2Z","SSA7-F1071-0T7F")
-      PS C:/> Get-Monitor -ComputerName $Computers
+      PS C:/> Get-Monitor.ps1 -ComputerName $Computers
 
       Manufacturer Model      SerialNumber AttachedComputer
       ------------ -----      ------------ ----------------
@@ -147,7 +147,6 @@ Function Get-Monitor {
         SerialNumber     = $Mon_Serial_Number
         AttachedComputer = $Mon_Attached_Computer
       }
-
       
       #Appends the object to the array
       $Monitor_Array += $Monitor_Obj
@@ -157,7 +156,7 @@ Function Get-Monitor {
     #Outputs the Array
     $Monitor_Array
     
-    
-  } #End ForEach Computer
+} #End ForEach Computer
+
 
 }
